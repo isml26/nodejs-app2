@@ -4,15 +4,17 @@ module.exports = app => {
   app.get(
     '/auth/google',
     passport.authenticate('google', {
-      scope: ['email', 'profile']
+      scope: ['profile', 'email']
     })
   );
 
-  app.get('/auth/google/callback',
-    passport.authenticate('google', {
-      successRedirect: '/blogs',
-      failureRedirect: '/login'
-    }));
+  app.get(
+    '/auth/google/callback',
+    passport.authenticate('google'),
+    (req, res) => {
+      res.redirect('/blogs');
+    }
+  );
 
   app.get('/auth/logout', (req, res) => {
     req.logout();

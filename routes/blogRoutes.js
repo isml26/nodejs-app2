@@ -19,13 +19,13 @@ module.exports = app => {
     res.send(blogs);
   });
 
-  app.post('/api/blogs', async (req, res) => {
+  app.post('/api/blogs', requireLogin, async (req, res) => {
     const { title, content } = req.body;
 
     const blog = new Blog({
       title,
       content,
-      _user: "req.user.id"
+      _user: req.user.id
     });
 
     try {
