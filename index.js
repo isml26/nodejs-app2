@@ -4,15 +4,31 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
 const cors = require('cors')
+
 require('./models/User');
 require('./models/Blog');
 require('./services/passport');
+require('./services/cache');
 
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost:27017/blogdb2");
 
 const app = express();
-app.use(cors())
+app.use(cors({
+  "AllowedHeaders": [
+      "*"
+  ],
+  "AllowedMethods": [
+      "PUT",
+      "POST",
+      "DELETE"
+  ],
+  "AllowedOrigins": [
+      "http://localhost:3000"
+  ],
+  "ExposeHeaders": [],
+}
+));
 app.use(express.json());
 app.use(
   cookieSession({
