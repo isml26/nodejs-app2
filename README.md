@@ -2,9 +2,13 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Purpose Of Project
 
-In the project directory, you can run:
+-Data caching with redis
+-Automated Headless Browser
+-Wirig up Contunious Integration
+-Scalable Image/File Upload with AWS-S3
+
 
 ### `npm start`
 
