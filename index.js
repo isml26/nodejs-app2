@@ -3,32 +3,39 @@ const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
-const cors = require('cors')
+const cors = require('cors');
+const dotenv = require('dotenv');
 
 require('./models/User');
 require('./models/Blog');
 require('./services/passport');
 require('./services/cache');
 
+
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/blogdb2");
+
+//"mongodb://localhost:27017/blogdb2"
+mongoose.connect("mongodb://localhost:27017/blogdb2").then(() => {
+  console.log("Connected Database")
+}).catch((e) => console.log(e))
+
 
 const app = express();
+dotenv.config();
 app.use(cors({
   "AllowedHeaders": [
-      "*"
+    "*"
   ],
   "AllowedMethods": [
-      "PUT",
-      "POST",
-      "DELETE"
+    "PUT",
+    "POST",
+    "DELETE"
   ],
   "AllowedOrigins": [
-      "http://localhost:3000"
+    "http://localhost:3000"
   ],
   "ExposeHeaders": [],
-}
-));
+}));
 app.use(express.json());
 app.use(
   cookieSession({
