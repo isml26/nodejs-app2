@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 
-module.exports = ()=>{
-    return new User({}).save();
-}
+module.exports = (userProps = {}) => {
+    return new User(userProps).save();
+  };
