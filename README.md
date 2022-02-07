@@ -4,9 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Project Goals
 
+* Social Login
 * Data caching with redis 
 * Automated Headless Browser 
-* Wirig up Contunious Integration 
+* Wiring up Contunious Integration 
 * Scalable Image/File Upload with AWS-S3
 
 ### `npm start`

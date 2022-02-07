@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const redis = require('redis');
 const util = require('util');
-
-const redisUrl = 'redis://127.0.0.1:6379';
-const client = redis.createClient(redisUrl);
+const keys = require('../config/keys')
+//const redisUrl = 'redis://127.0.0.1:6379';
+const client = redis.createClient(keys.redisUrl);
 client.hget = util.promisify(client.hget); //trying to return promise instead making of using callback
 
 //expects to return mongoose_model

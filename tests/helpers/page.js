@@ -9,7 +9,8 @@ class CustomPage {
     // generate new puppeteer page and create custom page ,combine together with proxy object
     static async build(){
         const browser = await puppeteer.launch({
-            headless:false
+            headless:true, // chromium will attempt to open a window on local machine if its false
+            args: ['--no-sandbox'] // decrease time to run tests
         });
         const page = await browser.newPage();
         const customPage = new CustomPage(page);
@@ -25,7 +26,7 @@ class CustomPage {
 
         await this.page.setCookie({ name:'session',value:session });
         await this.page.setCookie({ name:'session.sig',value:sig });
-        await this.page.goto('localhost:3000/blogs');
+        await this.page.goto('http://localhost:3000/blogs');
         await this.page.waitFor('a[href="/auth/logout"]');
     }
     async getContentsOf(selector){
