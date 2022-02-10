@@ -8,7 +8,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Data caching with redis 
 * Automated Headless Browser 
 * Wiring up Contunious Integration 
-* Scalable Image/File Upload with AWS-S3
+* Scalable Image/File Upload with AWS S3
+
+![Adsız](https://user-images.githubusercontent.com/62605922/153504227-d4ec8458-d4ce-4703-b75c-5368da14f4cd.png)
+![blog](https://user-images.githubusercontent.com/62605922/153504235-ae32a660-6c40-47c6-a0b1-1e7e893aed8d.gif)
+
 
 ### `npm start`
 

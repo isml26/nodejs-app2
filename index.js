@@ -31,9 +31,6 @@ app.use(cors({
     "POST",
     "DELETE"
   ],
-  "AllowedOrigins": [
-    "http://localhost:3000"
-  ],
   "ExposeHeaders": [],
 }));
 app.use(express.json());
@@ -46,8 +43,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+//require returns a function second paranthese invoke that function
 require('./routes/authRoutes')(app);
 require('./routes/blogRoutes')(app);
+require('./routes/uploadRoutes')(app);
 
 if (['production', 'ci'].includes(process.env.NODE_ENV)) {
   app.use(express.static('client/build'));
