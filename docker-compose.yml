@@ -1,41 +1,48 @@
 version: "3.9"
 services:
-  vue-server:
-    image: ismail26/blog-client
-    stdin_open: true
-    ports:
-      - "8081:80"
-    networks: 
-      - blog-app
   api-server:
-    image: ismail26/blog-server
+    image: ismail26/blog-server:1.0
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - mongoURI=mongodb://mongo:27017/blog_prod
+      - accessKeyId=AKIAYVTH5UHMENEA6THQ
+      - secretAccessKey=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
+      - googleClientID=651703767902-6r273o5sv15dn81h1uplck7e9s8ptfbg.apps.googleusercontent.com
+      - googleClientSecret=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
+      - cookieKey=123123123
+      - redisUrl=redis://redis:6379
     ports:
       - "5000:5000"
     networks: 
       - blog-app
     depends_on: 
-        - mongo
+      - mongo
+      - redis
   mongo:
     image: mongo:3.6.19
     ports: 
       - "27017:27017"
-    networks: 
-    - blog-app 
-  cache:
-    image: redis:alpine
     restart: always
-    ports: 
-      - "6379:6379"
-    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
     networks: 
-    - blog-app 
+      - blog-app
     volumes:
-      - cache: /data
+      - mongo-data:/data/db 
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    restart: always
+    command: redis-server
+    networks: 
+      - blog-app 
+    volumes:
+      - redis-data:/data
 networks:
   blog-app:
     driver: bridge
 volumes:
   mongo-data:
     driver: local
-  cache:
+  redis-data:
     driver: local

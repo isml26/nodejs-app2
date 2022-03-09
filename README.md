@@ -9,18 +9,25 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Automated Headless Browser 
 * Wiring up Contunious Integration 
 * Scalable Image/File Upload with AWS S3
+* Dockerizing app and run with docker compose contains mongodb and redis instances
 
 ![Adsız](https://user-images.githubusercontent.com/62605922/153504227-d4ec8458-d4ce-4703-b75c-5368da14f4cd.png)
-![blog](https://user-images.githubusercontent.com/62605922/153504235-ae32a660-6c40-47c6-a0b1-1e7e893aed8d.gif)
+![blog](https://user-images.githubusercontent.com/62605922/153504235-ae32a660-6c40-47c6-a0b1-1e7e893aed8d.gif)![compose](https://user-images.githubusercontent.com/62605922/157553408-29f4ae9c-e2a9-4152-80b6-0da1f2df3f57.png)
 
 
-### `npm start`
+
+### `npm run server`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:500](http://localhost:5000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+### `docker compose up`
+
+Runs the app in the production mode.\
+Open [http://localhost:500](http://localhost:5000) to view it in the browser.
 
 ### `npm test`
 
