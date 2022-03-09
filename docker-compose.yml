@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  vue-server:
+    image: ismail26/blog-client
+    stdin_open: true
+    ports:
+      - "8081:80"
+    networks: 
+      - blog-app
+  api-server:
+    image: ismail26/blog-server
+    ports:
+      - "5000:5000"
+    networks: 
+      - blog-app
+    depends_on: 
+        - mongo
+  mongo:
+    image: mongo:3.6.19
+    ports: 
+      - "27017:27017"
+    networks: 
+    - blog-app 
+  cache:
+    image: redis:alpine
+    restart: always
+    ports: 
+      - "6379:6379"
+    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    networks: 
+    - blog-app 
+    volumes:
+      - cache: /data
+networks:
+  blog-app:
+    driver: bridge
+volumes:
+  mongo-data:
+    driver: local
+  cache:
+    driver: local
