@@ -10,12 +10,12 @@ mongoose.Promise = global.Promise;
 dotenv.config();
 //"build": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
 //"mongodb+srv://admin:admin@cluster0.4patz.mongodb.net/blog_for_everyone?retryWrites=true&w=majority"
-
+console.log(keys.mongoURI);
 mongoose.connect(keys.mongoURI).then(() => {
   console.log("Connected Database")
 }).catch((e) => console.log(e))
 
-
+console.log(keys.redisUrl)
 app.listen(PORT, () => {
   console.log(`Listening on port`, PORT);
 });
