@@ -19,7 +19,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### `npm run server`
 
 Runs the app in the development mode.\
-Open [http://localhost:500](http://localhost:5000) to view it in the browser.
+Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
@@ -27,7 +27,7 @@ You will also see any lint errors in the console.
 ### `docker compose up`
 
 Runs the app in the production mode.\
-Open [http://localhost:500](http://localhost:5000) to view it in the browser.
+Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
 
 ### `npm test`
 
